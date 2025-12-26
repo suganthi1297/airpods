@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Airpods</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<style>
+    body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#f4f6f9;
+}
+
+.payment-container{
+  max-width:1000px;
+  margin:40px auto;
+  background:#fff;
+  padding:30px;
+  border-radius:10px;
+}
+
+.payment-title{
+  text-align:center;
+  font-size:22px;
+  margin-bottom:30px;
+}
+
+/* layout */
+.payment-layout{
+  display:flex;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+/* left product */
+.product-box{
+  flex:1;
+  border:1px solid #ddd;
+  border-radius:8px;
+  padding:15px;
+}
+
+.product-box img{
+  width:100%;
+  border-radius:6px;
+}
+
+.product-info{
+  margin-top:10px;
+  font-size:14px;
+}
+
+/* order summary */
+.summary-box{
+  flex:1;
+  border:1px solid #ddd;
+  border-radius:8px;
+  padding:20px;
+}
+
+.summary-box h3{
+  margin-bottom:15px;
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  margin:6px 0;
+  font-size:14px;
+}
+
+.row.total{
+  font-weight:bold;
+  font-size:16px;
+}
+
+hr{
+  border:none;
+  border-top:1px solid #ddd;
+  margin:10px 0;
+}
+.payment-options select{
+  width:50%;
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  margin-bottom:15px;
+  font-size:15px;
+}
+
+/* payment options */
+.payment-options{
+  margin-top:30px;
+}
+
+.payment-options h3{
+  margin-bottom:15px;
+}
+
+.options{
+  display:flex;
+  gap:15px;
+}
+
+.option{
+  flex:1;
+  border:1px solid #ccc;
+  padding:15px;
+  text-align:center;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.option.active{
+  border-color:#1a73e8;
+  background:#eef4ff;
+}
+
+/* gpay form */
+.gpay-form{
+  display:none;
+  margin-top:20px;
+  border:1px solid #ddd;
+  padding:20px;
+  border-radius:8px;
+}
+
+.gpay-form input{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border:1px solid #ccc;
+  border-radius:5px;
+}
+
+.gpay-form button{
+  width:100%;
+  padding:12px;
+  background:#1a73e8;
+  color:#fff;
+  border:none;
+  border-radius:5px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* success box */
+.success-box{
+  display:none;
+  margin-top:30px;
+  background:#2f74ff;
+  color:#fff;
+  text-align:center;
+  padding:40px;
+  border-radius:10px;
+  font-size:18px;
+}
+</style>
+<body>
+<header class="navbar">
+  <div class="nav-top">
+
+    <!-- Logo -->
+    <div class="logo-box">
+      <img src="images/image 64.png" alt="logo" class="logo">
+      <span class="logo-text">Airnew</span>
+    </div>
+
+   <div class="nav-middle">
+  <div class="nav-row">
+    
+    <!-- Nav links -->
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="product.html">Products</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="blogs.html">Blogs</a></li>
+      <li><a href="contact.html">Contact us</a></li>
+      <li><a href="about.html">About us</a></li>
+    </ul>
+
+    <!-- Icons + Profile in separate div -->
+    <div class="nav-actions">
+        <div class="profile-dropdown">
+  <img src="images/Photo by Clem Onojeghuo.png" alt="profile" class="profile-pic" id="profileBtn">
+
+  <div class="dropdown-menu" id="profileMenu">
+    <h4>My Accounts</h4>
+    <a href="acount.html">Account Information</a>
+    <a href="myorder.html">My order</a>
+    <a href="track.html">Tracking order</a>
+    <a href="password.html">Password Manager</a>
+    <a href="logout.html">Logout</a>
+  </div>
+</div>
+
+      <div class="nav-actions">
+  <a href="wishlist.html" class="nav-icon">
+    <i class="fa-regular fa-heart"></i>
+  </a>
+
+  <a href="cart.html" class="nav-icon">
+    <i class="fa-solid fa-cart-shopping"></i>
+  </a>
+
+  <a href="notifications.html" class="nav-icon">
+    <i class="fa-regular fa-bell"></i>
+  </a>
+</div>
+
+    </div>
+
+  </div>
+
+      <!-- Search bar under navbar -->
+      <div class="search-bar">
+        <input type="text" placeholder="Search">
+        <i class="fa fa-search"></i>
+      </div>
+    </div>
+
+  </div>
+</header>
+<div class="payment-container">
+  <div class="payment-title">Payment Section</div>
+
+  <div class="payment-layout">
+    <!-- Product -->
+    <div class="product-box">
+      <img src="images/product.jpg" alt="Product">
+      <div class="product-info">
+        <p><strong>Product:</strong> Airpod Pro Earbud</p>
+        <p><strong>Date:</strong> 22 August 2025</p>
+        <p><strong>Price:</strong> $29</p>
+      </div>
+    </div>
+
+    <!-- Order Summary -->
+    <div class="summary-box">
+      <h3>Order Summary</h3>
+      <div class="row"><span>Items</span><span>1</span></div>
+      <div class="row"><span>Subtotal</span><span>$29.00</span></div>
+      <div class="row"><span>Shipping</span><span>$0.00</span></div>
+      <div class="row"><span>Taxes</span><span>$0.00</span></div>
+      <div class="row"><span>Coupon Discount</span><span>$2.00</span></div>
+      <hr>
+      <div class="row total"><span>Total</span><span>$27.00</span></div>
+    </div>
+  </div>
+
+  <div class="payment-options">
+  <h3>Select Payment Method</h3>
+
+  <select id="paymentSelect" onchange="selectPayOption()">
+    <option value="">-- Choose Payment Method --</option>
+    <option value="gpay">GPay</option>
+    <option value="phonepe">PhonePe</option>
+    <option value="paytm">Paytm</option>
+  </select>
+
+  <!-- GPay Form -->
+  <div class="gpay-form" id="gpayForm">
+    <h4>Pay with GPay</h4>
+    <input type="text" placeholder="UPI ID" required>
+    <input type="password" placeholder="PIN" required>
+    <button onclick="makePayment()">Pay $27</button>
+  </div>
+</div>
+
+  <!-- Success -->
+  <div class="success-box" id="successBox">
+    ✅ Payment Successfully Done <br><br>
+    Redirecting to wishlist...
+  </div>
+</div>
+<!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+
+      <!-- Logo -->
+      <div class="footer-logo">
+        <img src="images/image 64.png" alt="logo">
+        <h2>Airnew</h2>
+      </div>
+
+      <!-- Customer service -->
+      <div class="footer-col">
+        <h4>Customer service</h4>
+        <a href="#">My Account</a>
+        <a href="#">Checkup</a>
+        <a href="#">FAQ</a>
+        <a href="#">Return</a>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About us</a>
+        <a href="#">Blogs</a>
+        <a href="#">Contact us</a>
+        <a href="#">Policy</a>
+      </div>
+
+      <!-- Our information -->
+      <div class="footer-col">
+        <h4>Our information</h4>
+        <a href="#">Privacy</a>
+        <a href="#">Terms & Condition</a>
+        <a href="#">Customer Feed back</a>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col contact">
+        <p><strong>Mobile:</strong> 123-456-789</p>
+        <p><strong>Email:</strong> Airnew@gmail.com</p>
+        <p><strong>Address:</strong> 12, north city-001</p>
+
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 airnew.co. All rights reserved.
+      <br>
+      Term and Condition|Privacy Policy
+    </div>
+    
+  </footer>
+
+<script>
+  const profileBtn = document.getElementById("profileBtn");
+  const profileMenu = document.getElementById("profileMenu");
+
+  profileBtn.addEventListener("click", () => {
+    profileMenu.style.display =
+      profileMenu.style.display === "block" ? "none" : "block";
+  });
+
+  // Close when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".profile-dropdown")) {
+      profileMenu.style.display = "none";
+    }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+function selectPayOption(){
+  const val = document.getElementById('paymentSelect').value;
+  document.getElementById('gpayForm').style.display = 
+      (val === 'gpay') ? 'block' : 'none';
+}
+
+function makePayment(){
+  document.getElementById('gpayForm').style.display = 'none';
+  document.getElementById('successBox').style.display = 'block';
+
+  setTimeout(()=>{
+    window.location.href = "wishlist.html";
+  },3000);
+}
+</script>
+
+<script>
+function selectPay(method){
+  document.querySelectorAll('.option').forEach(o=>o.classList.remove('active'));
+  event.target.classList.add('active');
+
+  if(method === 'gpay'){
+    document.getElementById('gpayForm').style.display = 'block';
+  } else {
+    document.getElementById('gpayForm').style.display = 'none';
+    alert(method + " option selected. (Demo only)");
+  }
+}
+
+function makePayment(){
+  document.getElementById('gpayForm').style.display = 'none';
+  document.getElementById('successBox').style.display = 'block';
+
+  setTimeout(()=>{
+    window.location.href = "wishlist.html";
+  },3000);
+}
+</script>
+</body>
+</html>
